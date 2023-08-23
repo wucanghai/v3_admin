@@ -5,5 +5,5 @@ const pageTitle = ref<string>('dashboard')
 </script>
 
 <template>
-  <div>{{ pageTitle }}</div>
+  <div class="app-container">{{ pageTitle }}</div>
 </template>

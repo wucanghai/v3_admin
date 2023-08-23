@@ -28,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "@vitejs/plugin-vue": "^4.2.3",
+    "axios": "^1.4.0",
     "element-plus": "^2.3.9",
     "eslint": "^8.47.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -42,11 +43,14 @@
     "pinia": "^2.1.6",
     "prettier": "^3.0.1",
     "sass": "^1.65.1",
+    "screenfull": "^6.0.2",
     "scss": "^0.2.4",
     "typescript": "^5.0.2",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.5",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-svg-loader": "^4.0.0",
     "vue-router": "4",
     "vue-tsc": "^1.8.5"
   }

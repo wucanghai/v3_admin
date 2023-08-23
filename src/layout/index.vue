@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Sliderbar, AppMain, NavigationBar } from './components'
+import { Sliderbar, AppMain, NavigationBar, TagsView } from './components'
 import { useAppStore } from '@/store/modules/app'
 
 const appStore = useAppStore()
 
 const classObj = computed(() => {
   return {
-    hideSidebar: !appStore.sidebar.opened
+    hideSidebar: !appStore.sidebar.opened,
+    openSidebar: appStore.sidebar.opened
   }
 })
 </script>
@@ -15,9 +16,10 @@ const classObj = computed(() => {
 <template>
   <div :class="classObj" class="app-wrapper">
     <Sliderbar class="sidebar-container" />
-    <div class="main-container">
+    <div :class="{ hasTagsView: true }" class="main-container">
       <div :class="{ 'fixed-header': true }">
         <NavigationBar />
+        <TagsView v-show="true" />
       </div>
       <AppMain />
     </div>
@@ -30,10 +32,6 @@ const classObj = computed(() => {
   @include clearfix;
   position: relative;
   width: 100%;
-}
-
-.app-wrapper {
-  display: flex;
 }
 
 .main-container {

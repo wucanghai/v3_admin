@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { ElScrollbar, ElMenu } from 'element-plus'
-import { usePermission } from '@/store/modules/permission'
+import { usePermissionStore } from '@/store/modules/permission'
 import { useAppStore } from '@/store/modules/app'
 import { useRoute } from 'vue-router'
 
@@ -20,7 +20,7 @@ const v3SidebarMenuActiveTextColor = getCssVariableValue(
 
 const route = useRoute()
 
-const permission = usePermission()
+const permissionStore = usePermissionStore()
 const appStore = useAppStore()
 
 const isCollapse = computed(() => {
@@ -52,7 +52,7 @@ const activeMenu = computed(() => {
         mode="vertical"
       >
         <SidebarItem
-          v-for="route in permission.routes"
+          v-for="route in permissionStore.routes"
           :items="route"
           :key="route.path"
           :isFirstLevel="true"

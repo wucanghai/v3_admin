@@ -11,10 +11,11 @@ export const constantRoutes: RouteRecordRaw[] = [
       {
         path: 'dashboard',
         component: () => import('../views/dashboard/index.vue'),
-        name: 'dashboard',
+        name: 'Dashboard',
         meta: {
           title: 'dashboard',
-          icon: 'House'
+          icon: 'House',
+          affix: true
         }
       }
     ]
@@ -23,6 +24,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: '/menu',
     component: Layout,
     redirect: '/menu/menu1',
+    name: 'Menu',
     meta: {
       title: '多级菜单',
       icon: 'Operation'
@@ -31,6 +33,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       {
         path: 'menu1',
         component: () => import('../views/menu/menu1/index.vue'),
+        name: 'Menu1',
         meta: {
           title: 'menu1'
         },
@@ -38,6 +41,7 @@ export const constantRoutes: RouteRecordRaw[] = [
           {
             path: 'menu1-1',
             component: () => import('../views/menu/menu1/menu1-1/index.vue'),
+            name: 'Menu1-1',
             meta: {
               title: 'menu1-1'
             }
@@ -45,6 +49,7 @@ export const constantRoutes: RouteRecordRaw[] = [
           {
             path: 'menu1-2',
             component: () => import('../views/menu/menu1/menu1-2/index.vue'),
+            name: 'Menu1-2',
             meta: {
               title: 'menu1-2'
             },
@@ -74,6 +79,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       {
         path: '/menu2',
         component: () => import('../views/menu/menu2/index.vue'),
+        name: 'Menu2',
         meta: {
           title: 'menu2'
         }
