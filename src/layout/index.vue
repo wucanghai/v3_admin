@@ -1,20 +1,36 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Sliderbar, AppMain, NavigationBar, TagsView } from './components'
-import { useAppStore } from '@/store/modules/app'
+import { useAppStore, DeviceType } from '@/store/modules/app'
+import useResize from '@/hooks/useResize'
 
 const appStore = useAppStore()
+
+useResize()
+
+const handleClickOutside = () => {
+  appStore.closeSidebar(false)
+}
 
 const classObj = computed(() => {
   return {
     hideSidebar: !appStore.sidebar.opened,
-    openSidebar: appStore.sidebar.opened
+    openSidebar: appStore.sidebar.opened,
+    withoutAnimation: appStore.sidebar.withoutAnimation,
+    mobile: appStore.device === DeviceType.Mobile
+    // showGreyMode: showGreyMode.value,
+    // showColorWeakness: showColorWeakness.value
   }
 })
 </script>
 
 <template>
   <div :class="classObj" class="app-wrapper">
+    <div
+      v-if="classObj.mobile && classObj.openSidebar"
+      class="drawer-bg"
+      @click="handleClickOutside"
+    />
     <Sliderbar class="sidebar-container" />
     <div :class="{ hasTagsView: true }" class="main-container">
       <div :class="{ 'fixed-header': true }">
@@ -39,6 +55,16 @@ const classObj = computed(() => {
   transition: margin-left 0.28s;
   margin-left: var(--v3-sidebar-width);
   position: relative;
+}
+
+.drawer-bg {
+  background-color: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
 }
 
 .sidebar-container {
@@ -72,6 +98,39 @@ const classObj = computed(() => {
   }
   .fixed-header {
     width: calc(100% - var(--v3-sidebar-hide-width));
+  }
+}
+
+// for mobile response 适配移动端
+.mobile {
+  .main-container {
+    margin-left: 0px;
+  }
+  .sidebar-container {
+    transition: transform 0.28s;
+    width: var(--v3-sidebar-width) !important;
+  }
+  &.openSidebar {
+    position: fixed;
+    top: 0;
+  }
+  &.hideSidebar {
+    .sidebar-container {
+      pointer-events: none;
+      transition-duration: 0.3s;
+      transform: translate3d(calc(0px - var(--v3-sidebar-width)), 0, 0);
+    }
+  }
+
+  .fixed-header {
+    width: 100%;
+  }
+}
+
+.withoutAnimation {
+  .main-container,
+  .sidebar-container {
+    transition: none;
   }
 }
 </style>
