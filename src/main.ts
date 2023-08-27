@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
-
 import store from '@/store'
 import router from '@/router'
+
+import '@/router/permission'
+
 import { loadPlugins } from '@/plugins'
 import { loadSvg } from '@/icons'
 

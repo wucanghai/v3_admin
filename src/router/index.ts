@@ -100,6 +100,14 @@ export const constantRoutes: RouteRecordRaw[] = [
         }
       }
     ]
+  },
+  {
+    path: '/login',
+    component: () => import('../views/login/index.vue'),
+    name: 'Login',
+    meta: {
+      hidden: true
+    }
   }
 ]
 

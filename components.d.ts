@@ -15,4 +15,7 @@ declare module 'vue' {
     Screenfull: typeof import('./src/components/Screenfull/index.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
   }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
+  }
 }
