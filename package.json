@@ -20,6 +20,13 @@
       "prettier --write"
     ]
   },
+  "keywords": [
+    "vue3",
+    "typescript",
+    "pinia",
+    "vue-router4",
+    "element-plus"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
